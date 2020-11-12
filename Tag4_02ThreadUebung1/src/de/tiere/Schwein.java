@@ -39,6 +39,12 @@ public class Schwein {
 	}
 
 	public void fressen() {
+	
+		new Thread(this::fressenImpl).start();
+	}
+
+
+	private void fressenImpl() {
 		try {
 			Thread.sleep(2000);
 			gewicht ++;
