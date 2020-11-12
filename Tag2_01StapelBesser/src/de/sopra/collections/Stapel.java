@@ -8,21 +8,21 @@ package de.sopra.collections;
  * @author JoachimWagner
  *
  */
-public class Stapel {
+public class Stapel<T> {
 	
 	/**
 	 * Ein toller Konstrukur
 	 */
 	private static final int DEFAULTSIZE = 10;
 	private int index ;
-	private int [] data;
+	private T [] data;
 	public Stapel() {
 		this(DEFAULTSIZE);
 	}
 	
 	public Stapel(int groesse) {
 		index = 0;
-		data = new int[groesse< 1 ? DEFAULTSIZE: groesse];
+		data = (T[]) new Object[groesse< 1 ? DEFAULTSIZE: groesse];
 	}
 	
 	/**
@@ -30,19 +30,19 @@ public class Stapel {
 	 * 
 	 * @param value
 	 */
-	public void push (int value) { // Verhalten im Fehlerfall
+	public void push (T value) { // Verhalten im Fehlerfall
 		if(isFull())
 			return;
 		addItem(value);
 	}
 
-	private void addItem(int value) {
+	private void addItem(T value) {
 		data[index++] = value;
 	}
 	
-	public int pop() {
+	public T pop() {
 		if(isEmpty())
-			return 0;
+			return null;
 		return data[--index];
 	}
 	
